@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Dhruv Patel | Software Engineer & DevOps",
+  title: "Dhruv Patel",
   description: "Portfolio of Dhruv Patel — Software Engineer & DevOps specializing in Kubernetes, AWS, and CI/CD automation.",
 };
 
