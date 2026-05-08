@@ -1,32 +1,200 @@
+"use client";
+
 export default function About() {
   return (
-    <main className="bg-black text-white min-h-screen px-6 py-20">
+    <main className="bg-[#0a0a0a] text-white min-h-screen font-mono">
 
-      <h1 className="text-4xl font-bold text-center">About Me</h1>
+      {/* NAV */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/90 backdrop-blur border-b border-white/5">
+        <div className="max-w-3xl mx-auto px-6 py-4 flex justify-between items-center">
+          <a href="/" className="text-sm font-bold tracking-widest text-teal-400">dp</a>
+          <div className="flex gap-6 text-xs text-gray-400">
+            <a href="/about" className="text-white">About</a>
+            <a href="/#skills" className="hover:text-white transition">Skills</a>
+            <a href="/#experience" className="hover:text-white transition">Experience</a>
+            <a href="/#projects" className="hover:text-white transition">Projects</a>
+            <a href="/contact" className="hover:text-white transition">Contact</a>
+            <a href="/resume" className="hover:text-white transition">Resume</a>
+          </div>
+        </div>
+      </nav>
 
-      <p className="mt-6 max-w-3xl mx-auto text-gray-400 text-center">
-        I am a DevOps-focused engineer passionate about building scalable,
-        reliable systems. I work with Kubernetes, AWS, Terraform, and monitoring
-        tools like Prometheus and Grafana to create production-ready infrastructure.
-      </p>
+      <div className="max-w-3xl mx-auto px-6 pt-32 pb-24">
 
-      <div className="mt-16 grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        {/* HERO */}
+        <p className="text-teal-400 text-xs tracking-widest mb-4">ABOUT</p>
+        <h1 className="text-4xl font-bold mb-6">Hey, I'm Dhruv</h1>
 
-        <div className="bg-gray-900 p-6 rounded-xl">
-          <h3 className="font-bold text-xl">Tech Stack</h3>
-          <p className="text-gray-400 mt-3">
-            AWS, Kubernetes, Docker, Terraform, Prometheus, Grafana
+        {/* INTRO WITH AVATAR */}
+        <div className="flex items-start gap-6 mb-16">
+          <div className="flex-shrink-0 w-16 h-16 rounded-full bg-teal-400/10 border border-teal-400/20 flex items-center justify-center">
+            <span className="text-teal-400 text-xl font-bold">DP</span>
+          </div>
+          <p className="text-gray-400 text-sm leading-relaxed pt-2">
+            A Software Engineer & DevOps professional based in Surat, Gujarat, India.
+            I care deeply about building systems that are reliable, scalable, and secure —
+            the kind of infrastructure that quietly powers great products without anyone noticing.
           </p>
         </div>
 
-        <div className="bg-gray-900 p-6 rounded-xl">
-          <h3 className="font-bold text-xl">What I Focus On</h3>
-          <p className="text-gray-400 mt-3">
-            High availability, observability, automation, and system reliability
-          </p>
+        {/* WHO I AM */}
+        <div className="mb-16">
+          <p className="text-teal-400 text-xs tracking-widest mb-6">WHO I AM</p>
+          <div className="space-y-4 text-gray-400 text-sm leading-relaxed">
+            <p>
+              I'm a engineer who sits at the intersection of software development and
+              infrastructure. I started out writing code and naturally gravitated toward
+              the systems that run it — cloud platforms, container orchestration, deployment
+              pipelines, and observability stacks.
+            </p>
+            <p>
+              I currently work at <span className="text-white">NEXtech</span> as a DevOps Engineer,
+              where I architect and maintain cloud infrastructure on AWS, manage Kubernetes clusters,
+              and build the automation that lets development teams ship fast and sleep well at night.
+            </p>
+            <p>
+              Before that, I spent over a year at <span className="text-white">Intelxlabs</span> as
+              a Software Engineer building enterprise cybersecurity tools in C# and WPF — which gave
+              me a solid foundation in writing production-grade software close to the metal.
+            </p>
+          </div>
+        </div>
+
+        {/* MY JOURNEY */}
+        <div className="mb-16">
+          <p className="text-teal-400 text-xs tracking-widest mb-8">MY JOURNEY</p>
+          <div className="space-y-0">
+            {[
+              {
+                year: "2019",
+                title: "Started M.Sc. in Information Technology",
+                desc: "Joined Veer Narmad South Gujarat University. Got my first real exposure to networks, systems, and programming fundamentals.",
+              },
+              {
+                year: "2024",
+                title: "Joined Intelxlabs as Software Engineer",
+                desc: "Built enterprise Windows applications in C# and WPF. Shipped Fusion VPN and Data Privacy tools used by real clients. Learned to own a product end-to-end.",
+              },
+              {
+                year: "2025",
+                title: "Moved into DevOps at NEXtech",
+                desc: "Shifted focus to cloud infrastructure and platform engineering. Started working with Kubernetes, AWS, Helm, and Grafana at scale.",
+              },
+              {
+                year: "Now",
+                title: "Building & learning AI in Cloud",
+                desc: "Deepening expertise in cloud-native architecture, GitOps, and observability. Open to new challenges and opportunities.",
+              },
+            ].map((item, i) => (
+              <div key={item.year} className="flex gap-6">
+                <div className="flex flex-col items-center">
+                  <div className={`w-2 h-2 rounded-full mt-1.5 flex-shrink-0 ${i === 3 ? "bg-teal-400" : "bg-white/20"}`}></div>
+                  {i < 3 && <div className="w-px flex-1 bg-white/5 my-2"></div>}
+                </div>
+                <div className={`${i < 3 ? "pb-8" : ""} flex-1`}>
+                  <span className="text-xs text-teal-400 font-bold">{item.year}</span>
+                  <h3 className="text-sm font-bold mt-1 mb-1">{item.title}</h3>
+                  <p className="text-gray-500 text-xs leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* WHAT I DO */}
+        <div className="mb-16">
+          <p className="text-teal-400 text-xs tracking-widest mb-6">WHAT I DO & HOW I WORK</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {[
+              {
+                title: "Infrastructure as Code",
+                desc: "I treat infrastructure the same way I treat software — versioned, reviewed, and automated. Terraform and Helm are my defaults.",
+              },
+              {
+                title: "Reliability first",
+                desc: "I obsess over uptime, alerting, and graceful degradation. If something breaks at 2am, I want dashboards and runbooks ready.",
+              },
+              {
+                title: "Automate the boring stuff",
+                desc: "Manual steps in a deployment are bugs waiting to happen. I build CI/CD pipelines that make shipping boring in the best way.",
+              },
+              {
+                title: "Security by default",
+                desc: "RBAC, least-privilege IAM, encrypted secrets, network policies — not afterthoughts but part of the initial design.",
+              },
+              {
+                title: "Clear communication",
+                desc: "I work closely with developers and stakeholders. I write documentation, draw architecture diagrams, and keep everyone aligned.",
+              },
+              {
+                title: "Continuous learning",
+                desc: "Cloud-native tooling evolves fast. I stay sharp by reading, building side projects, and going deep on the tools I use daily.",
+              },
+            ].map((item) => (
+              <div key={item.title} className="border border-white/10 rounded-lg p-5 hover:border-white/20 transition">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-teal-400">—</span>
+                  <h3 className="text-sm font-bold">{item.title}</h3>
+                </div>
+                <p className="text-gray-500 text-xs leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* VALUES */}
+        <div className="mb-16">
+          <p className="text-teal-400 text-xs tracking-widest mb-6">VALUES & PHILOSOPHY</p>
+          <div className="space-y-5">
+            {[
+              {
+                value: "Ownership",
+                desc: "I don't hand things off and forget. I see problems through from discovery to resolution, and I take responsibility for what I ship.",
+              },
+              {
+                value: "Simplicity",
+                desc: "The best solution is usually the simplest one that works. I avoid over-engineering and keep systems as lean as they can be.",
+              },
+              {
+                value: "Transparency",
+                desc: "I believe in open communication — sharing what I know, admitting what I don't, and asking for help when needed.",
+              },
+              {
+                value: "Impact",
+                desc: "I want my work to matter. Whether it's shaving seconds off a deploy or preventing an outage, I care about outcomes not just output.",
+              },
+            ].map((item) => (
+              <div key={item.value} className="flex gap-4 border-b border-white/5 pb-5 last:border-0 last:pb-0">
+                <span className="text-teal-400 text-xs font-bold w-24 flex-shrink-0 pt-0.5">{item.value}</span>
+                <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* CTA */}
+        <div className="border border-white/10 rounded-lg p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+          <div>
+            <p className="text-sm font-bold mb-1">Want to work together?</p>
+            <p className="text-xs text-gray-500">I'm open to remote and hybrid opportunities.</p>
+          </div>
+          <div className="flex gap-3">
+            <a href="/contact" className="bg-teal-400 text-black px-5 py-2.5 text-sm font-bold rounded hover:bg-teal-300 transition">
+              Get in touch
+            </a>
+            <a href="/resume" className="border border-white/20 text-white px-5 py-2.5 text-sm rounded hover:border-white/40 transition">
+              View resume
+            </a>
+          </div>
         </div>
 
       </div>
+
+      {/* FOOTER */}
+      <div className="border-t border-white/5 max-w-3xl mx-auto px-6 py-8">
+        <p className="text-xs text-gray-600">© 2026 Dhruv Patel.</p>
+      </div>
+
     </main>
   );
 }
