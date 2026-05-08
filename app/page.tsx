@@ -10,11 +10,11 @@ export default function Home() {
 
         {/* Logo + Name */}
         <div className="flex items-center gap-3">
-          <img
+          {/* <img
             src="/logo.png"
             alt="Dhruv Logo"
             className="h-8 w-auto brightness-200 hover:scale-105 transition duration-300"
-          />
+          /> */}
           <span className="font-semibold tracking-wide">Dhruv Patel</span>
         </div>
 
