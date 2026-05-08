@@ -25,7 +25,6 @@ export default function Home() {
 
         <motion.p {...fade(0.2)} className="text-gray-400 text-base leading-relaxed max-w-lg mb-3">
           Software Engineer & DevOps 
-          
         </motion.p>
 
         <motion.p {...fade(0.25)} className="text-gray-600 text-sm leading-relaxed max-w-lg mb-10">
@@ -56,7 +55,7 @@ export default function Home() {
       </section>
 
       {/* ── CURRENTLY ── */}
-      <section className="border-t border-white/5">
+      <section>
         <div className="max-w-3xl mx-auto px-6 py-16">
           <motion.div
             initial={{ opacity: 0 }}
@@ -81,7 +80,7 @@ export default function Home() {
       </section>
 
       {/* ── WHAT I DO ── */}
-      <section className="border-t border-white/5">
+      <section className="">
         <div className="max-w-3xl mx-auto px-6 py-20">
           <motion.p
             initial={{ opacity: 0 }}
@@ -144,7 +143,7 @@ export default function Home() {
       </section>
 
       {/* ── STACK ── */}
-      <section className="border-t border-white/5">
+      <section className="">
         <div className="max-w-3xl mx-auto px-6 py-20">
           <motion.p
             initial={{ opacity: 0 }}
@@ -184,7 +183,7 @@ export default function Home() {
       </section>
 
       {/* ── SELECTED PROJECTS ── */}
-      <section className="border-t border-white/5">
+      <section className="">
         <div className="max-w-3xl mx-auto px-6 py-20">
           <div className="flex justify-between items-center mb-10">
             <motion.p
@@ -260,7 +259,7 @@ export default function Home() {
       </section>
 
       {/* ── EXPERIENCE SNAPSHOT ── */}
-      <section className="border-t border-white/5">
+      <section className="">
         <div className="max-w-3xl mx-auto px-6 py-20">
           <motion.p
             initial={{ opacity: 0 }}
@@ -320,7 +319,7 @@ export default function Home() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="border-t border-white/5">
+      <section className="">
         <div className="max-w-3xl mx-auto px-6 py-24 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -353,7 +352,7 @@ export default function Home() {
       </section>
 
       {/* ── FOOTER ── */}
-      <footer className="border-t border-white/5 max-w-3xl mx-auto px-6 py-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <footer className="max-w-3xl mx-auto px-6 py-8 flex flex-col sm:flex-row justify-between items-center gap-4">
         <p className="text-xs text-gray-600">© 2026 Dhruv Patel</p>
         <div className="flex gap-6 text-xs text-gray-600">
           <a href="mailto:dhruvmpatel170301@gmail.com" className="hover:text-white transition">Email</a>
