@@ -10,7 +10,6 @@ export default function About() {
           <a href="/" className="text-sm font-bold tracking-widest text-teal-400">dp</a>
           <div className="flex gap-6 text-xs text-gray-400">
             <a href="/about" className="text-white">About</a>
-            <a href="/#skills" className="hover:text-white transition">Skills</a>
             <a href="/#experience" className="hover:text-white transition">Experience</a>
             <a href="/#projects" className="hover:text-white transition">Projects</a>
             <a href="/contact" className="hover:text-white transition">Contact</a>
