@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Navbar from "../components/Navbar";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -15,24 +16,10 @@ export default function Contact() {
   return (
     <main className="bg-[#0a0a0a] text-white min-h-screen font-mono">
 
-      {/* NAV */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/90 backdrop-blur border-b border-white/5">
-        <div className="max-w-3xl mx-auto px-6 py-4 flex justify-between items-center">
-          <a href="/" className="text-sm font-bold tracking-widest text-teal-400">dp</a>
-          <div className="flex gap-6 text-xs text-gray-400">
-            <a href="/#about" className="hover:text-white transition">About</a>
-            <a href="/#skills" className="hover:text-white transition">Skills</a>
-            <a href="/#experience" className="hover:text-white transition">Experience</a>
-            <a href="/#projects" className="hover:text-white transition">Projects</a>
-            <a href="/contact" className="text-white">Contact</a>
-            <a href="/resume" className="text-white">Resume</a>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
 
-      <div className="max-w-3xl mx-auto px-6 pt-32 pb-24">
+      <div className="max-w-3xl mx-auto px-6 pt-16 pb-24">
 
-        {/* HEADER */}
         <p className="text-teal-400 text-xs tracking-widest mb-4">CONTACT</p>
         <h1 className="text-4xl font-bold mb-4">Let's Connect</h1>
         <p className="text-gray-400 text-sm leading-relaxed max-w-md mb-16">
@@ -42,7 +29,6 @@ export default function Contact() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-16">
 
-          {/* LEFT — FORM */}
           <div className="flex flex-col gap-5">
             <div>
               <label className="text-xs text-gray-500 tracking-widest block mb-2">NAME</label>
@@ -91,9 +77,7 @@ export default function Contact() {
             )}
           </div>
 
-          {/* RIGHT — INFO */}
           <div className="flex flex-col gap-10">
-
             <div>
               <p className="text-xs text-gray-500 tracking-widest mb-5">REACH ME AT</p>
               <div className="flex flex-col gap-4">
@@ -136,7 +120,7 @@ export default function Contact() {
                   <div>
                     <p className="text-xs text-gray-500 mb-0.5">Status</p>
                     <div className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-teal-400"></span>
+                      <span className="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
                       <p className="text-sm text-gray-300">Open to opportunities</p>
                     </div>
                   </div>
@@ -157,14 +141,12 @@ export default function Contact() {
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
 
-      {/* FOOTER */}
-      <div className="border-t border-white/5 max-w-3xl mx-auto px-6 py-8">
-        <p className="text-xs text-gray-600">© 2026 Dhruv Patel.</p>
+      <div className="max-w-3xl mx-auto px-6 py-8">
+        <p className="text-xs text-gray-600">© 2026 Dhruv Patel</p>
       </div>
 
     </main>

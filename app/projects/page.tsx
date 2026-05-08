@@ -250,7 +250,7 @@ export default function Projects() {
 
       {/* FOOTER */}
       <div className="border-t border-white/5 max-w-5xl mx-auto px-6 py-8">
-        <p className="text-xs text-gray-600">© 2026 Dhruv Patel. Built with Next.js.</p>
+        <p className="text-xs text-gray-600">© 2026 Dhruv Patel</p>
       </div>
 
     </main>

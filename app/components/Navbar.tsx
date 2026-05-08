@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -15,16 +16,13 @@ export default function Navbar() {
 
   const links = [
     { href: "/about", label: "About" },
-    { href: "/#experience", label: "Experience" },
+    { href: "/experience", label: "Experience" },
     { href: "/projects", label: "Projects" },
     { href: "/contact", label: "Contact" },
     { href: "/resume", label: "Resume" },
   ];
 
-  const isActive = (href: string) => {
-    if (href.startsWith("/#")) return false;
-    return pathname === href;
-  };
+  const isActive = (href: string) => pathname === href;
 
   return (
     <>
@@ -38,38 +36,30 @@ export default function Navbar() {
         <div className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
 
           {/* LOGO */}
-          <a
+          <Link
             href="/"
             className="text-sm font-bold tracking-widest text-teal-400 hover:text-teal-300 transition-colors duration-200 font-mono"
           >
             Dhruv Patel
-          </a>
+          </Link>
 
           {/* DESKTOP LINKS */}
           <div className="hidden md:flex items-center gap-1">
             {links.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
-                className={`relative px-3 py-1.5 text-xs font-mono tracking-wide rounded transition-all duration-200 group ${
+                className={`px-3 py-1.5 text-xs font-mono tracking-wide rounded transition-all duration-200 ${
                   isActive(link.href)
-                    ? "text-white"
-                    : "text-gray-400 hover:text-white"
+                    ? "text-white bg-white/5 border border-white/10"
+                    : "text-gray-400 hover:text-white hover:bg-white/5 border border-transparent"
                 }`}
               >
-                {/* Active indicator */}
                 {isActive(link.href) && (
-                  <span className="absolute inset-0 bg-white/5 rounded border border-white/10" />
+                  <span className="text-teal-400 mr-1">›</span>
                 )}
-                {/* Hover indicator */}
-                <span className="absolute inset-0 bg-white/0 group-hover:bg-white/5 rounded transition-all duration-200" />
-                <span className="relative">
-                  {isActive(link.href) && (
-                    <span className="text-teal-400 mr-1">›</span>
-                  )}
-                  {link.label}
-                </span>
-              </a>
+                {link.label}
+              </Link>
             ))}
           </div>
 
@@ -94,21 +84,21 @@ export default function Navbar() {
         >
           <div className="max-w-5xl mx-auto px-6 py-4 flex flex-col gap-1">
             {links.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
                 className={`px-3 py-2.5 text-xs font-mono tracking-wide rounded transition-all duration-200 ${
                   isActive(link.href)
                     ? "text-white bg-white/5 border border-white/10"
-                    : "text-gray-400 hover:text-white hover:bg-white/5"
+                    : "text-gray-400 hover:text-white hover:bg-white/5 border border-transparent"
                 }`}
               >
                 {isActive(link.href) && (
                   <span className="text-teal-400 mr-2">›</span>
                 )}
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
         </div>
