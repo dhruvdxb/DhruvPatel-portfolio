@@ -30,7 +30,7 @@ export default function Home() {
 
         <motion.p {...fade(0.25)} className="text-gray-600 text-sm leading-relaxed max-w-lg mb-10">
           Currently at <span className="text-gray-400">NEXtech</span>, previously at{" "}
-          <span className="text-gray-400">Intelxlabs</span>. Based in Surat, India.
+          <span className="text-gray-400">Intelxlabs</span>
         </motion.p>
 
         <motion.div {...fade(0.3)} className="flex gap-4 flex-wrap">
@@ -67,7 +67,7 @@ export default function Home() {
           >
             {[
               { label: "Current Role", value: "DevOps Engineer", sub: "NEXtech · Remote" },
-              { label: "Location", value: "Surat, India", sub: "GMT+5:30" },
+              { label: "Location", value: "India", sub: "GMT+5:30" },
               { label: "Focus", value: "Cloud Native", sub: "Kubernetes · AWS · CI/CD" },
             ].map((item) => (
               <div key={item.label}>
