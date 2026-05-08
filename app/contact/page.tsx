@@ -25,6 +25,7 @@ export default function Contact() {
             <a href="/#experience" className="hover:text-white transition">Experience</a>
             <a href="/#projects" className="hover:text-white transition">Projects</a>
             <a href="/contact" className="text-white">Contact</a>
+            <a href="/resume" className="text-white">Resume</a>
           </div>
         </div>
       </nav>
