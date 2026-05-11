@@ -68,7 +68,7 @@ export default function Experience() {
   const [expanded, setExpanded] = useState<string>("NEXtech");
 
   return (
-    <main className="bg-[#0a0a0a] text-white min-h-screen font-mono">
+    <main className="bg-[#0a0a0a] text-white min-h-screen">
       <Navbar />
 
       <div className="max-w-3xl mx-auto px-6 pt-16 pb-24">

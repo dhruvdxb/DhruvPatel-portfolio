@@ -10,7 +10,7 @@ const fade = (delay = 0) => ({
 
 export default function Home() {
   return (
-    <main className="bg-[#0a0a0a] text-white min-h-screen font-mono">
+    <main className="bg-[#0a0a0a] text-white min-h-screen">
       <Navbar />
 
       {/* ── HERO ── */}
