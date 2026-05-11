@@ -26,11 +26,11 @@ export default function Home() {
         <motion.p {...fade(0.2)} className="text-gray-400 text-base leading-relaxed max-w-lg mb-3">
           Software Engineer & DevOps 
         </motion.p>
-
+{/* 
         <motion.p {...fade(0.25)} className="text-gray-600 text-sm leading-relaxed max-w-lg mb-10">
           Currently at <span className="text-gray-400">NEXtech</span>, previously at{" "}
           <span className="text-gray-400">Intelxlabs</span>
-        </motion.p>
+        </motion.p> */}
 
         <motion.div {...fade(0.3)} className="flex gap-4 flex-wrap">
           <a
