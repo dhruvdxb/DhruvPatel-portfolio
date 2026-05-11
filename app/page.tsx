@@ -19,7 +19,7 @@ export default function Home() {
           AVAILABLE FOR WORK · REMOTE / HYBRID
         </motion.p>
 
-        <motion.h1 {...fade(0.1)} className="text-5xl md:text-6xl font-bold leading-[1.1] tracking-tight mb-6">
+        <motion.h1 {...fade(0.1)} className="text-6xl md:text-7xl font-bold leading-[1.05] tracking-tight mb-3">
           Dhruv Patel
         </motion.h1>
 
