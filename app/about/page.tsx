@@ -33,16 +33,6 @@ export default function About() {
               the systems that run it — cloud platforms, container orchestration, deployment
               pipelines, and observability stacks.
             </p>
-            <p>
-              I currently work at <span className="text-white">NEXtech</span> as a DevOps Engineer,
-              where I architect and maintain cloud infrastructure on AWS, manage Kubernetes clusters,
-              and build the automation that lets development teams ship fast and sleep well at night.
-            </p>
-            <p>
-              Before that, I spent over a year at <span className="text-white">Intelxlabs</span> as
-              a Software Engineer building enterprise cybersecurity tools in C# and WPF — which gave
-              me a solid foundation in writing production-grade software close to the metal.
-            </p>
           </div>
         </div>
 

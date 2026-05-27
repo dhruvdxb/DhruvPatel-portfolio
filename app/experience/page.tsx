@@ -7,7 +7,7 @@ const experience = [
   {
     role: "DevOps Engineer",
     company: "NEXtech",
-    period: "Oct 2025 – Present",
+    period: "Oct 2025 – May 2026",
     location: "Remote · Bangalore",
     type: "Full-time",
     current: true,

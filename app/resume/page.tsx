@@ -71,7 +71,7 @@ export default function Resume() {
               <div className="pb-10 flex-1">
                 <div className="flex justify-between items-start flex-wrap gap-2 mb-1">
                   <h3 className="text-sm font-bold">DevOps Engineer</h3>
-                  <span className="text-xs text-gray-500">Oct 2025 – Present</span>
+                  <span className="text-xs text-gray-500">Oct 2025 – May 2026</span>
                 </div>
                 <p className="text-teal-400 text-xs mb-4">NEXtech · Remote, Bangalore</p>
                 <ul className="space-y-2">
