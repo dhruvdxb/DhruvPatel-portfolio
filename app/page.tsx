@@ -55,29 +55,47 @@ export default function Home() {
       </section>
 
       {/* ── CURRENTLY ── */}
-      <section>
-        <div className="max-w-3xl mx-auto px-6 py-16">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="grid grid-cols-1 sm:grid-cols-3 gap-8"
-          >
-            {[
-              { label: "Current Role", value: "DevOps Engineer", sub: "NEXtech · Remote" },
-              { label: "Location", value: "India", sub: "GMT+5:30" },
-              { label: "Focus", value: "Cloud Native", sub: "Kubernetes · AWS · CI/CD" },
-            ].map((item) => (
-              <div key={item.label}>
-                <p className="text-xs text-gray-600 tracking-widest mb-2">{item.label}</p>
-                <p className="text-sm text-white font-bold mb-1">{item.value}</p>
-                <p className="text-xs text-gray-500">{item.sub}</p>
-              </div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+        <section>
+          <div className="max-w-3xl mx-auto px-6 py-16">
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="grid grid-cols-1 sm:grid-cols-3 gap-8"
+            >
+              {[
+                {
+                  label: "Status",
+                  value: "Open to Work",
+                  sub: "Immediate Joiner"
+                },
+                { 
+                  label: "Location", 
+                  value: "India", 
+                  sub: "GMT+5:30 · Remote / Hybrid" 
+                },
+                {
+                  label: "Focus",
+                  value: "Software Engineering & DevOps",
+                  sub: "Kubernetes · AWS · CI/CD"
+                }
+              ].map((item) => (
+                <div key={item.label}>
+                  <p className="text-xs text-gray-600 tracking-widest mb-2">
+                    {item.label}
+                  </p>
+                  <p className="text-sm text-white font-bold mb-1">
+                    {item.value}
+                  </p>
+                  <p className="text-xs text-gray-500">
+                    {item.sub}
+                  </p>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+        </section>
 
       {/* ── WHAT I DO ── */}
       <section className="">
@@ -275,7 +293,7 @@ export default function Home() {
               {
                 role: "DevOps Engineer",
                 company: "NEXtech",
-                period: "Oct 2025 – Present",
+                period: "Oct 2025 – May 2026",
                 location: "Remote · Bangalore",
                 desc: "Architecting cloud infrastructure on AWS, managing Kubernetes clusters, and building CI/CD automation at scale.",
               },
@@ -353,7 +371,7 @@ export default function Home() {
 
       {/* ── FOOTER ── */}
       <footer className="max-w-3xl mx-auto px-6 py-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <p className="text-xs text-gray-600">© 2026 Dhruv Patel</p>
+        <p className="text-xs text-gray-600">© 2026 Built By Dhruv Patel</p>
         <div className="flex gap-6 text-xs text-gray-600">
           <a href="mailto:dhruvmpatel170301@gmail.com" className="hover:text-white transition">Email</a>
           <a href="https://linkedin.com/in/dhruv-patel-164118268" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">LinkedIn</a>
