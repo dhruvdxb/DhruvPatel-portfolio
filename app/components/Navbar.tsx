@@ -38,7 +38,7 @@ export default function Navbar() {
           {/* LOGO */}
           <Link
             href="/"
-            className="text-sm font-bold tracking-widest text-teal-400 hover:text-teal-300 transition-colors duration-200 font-mono"
+            className="text-sm font-bold tracking-widest text-blue-400 hover:text-blue-300 transition-colors duration-200 font-mono"
           >
             Dhruv Patel
           </Link>
@@ -56,7 +56,7 @@ export default function Navbar() {
                 }`}
               >
                 {isActive(link.href) && (
-                  <span className="text-teal-400 mr-1">›</span>
+                  <span className="text-blue-400 mr-1">›</span>
                 )}
                 {link.label}
               </Link>
@@ -95,7 +95,7 @@ export default function Navbar() {
                 }`}
               >
                 {isActive(link.href) && (
-                  <span className="text-teal-400 mr-2">›</span>
+                  <span className="text-blue-400 mr-2">›</span>
                 )}
                 {link.label}
               </Link>
