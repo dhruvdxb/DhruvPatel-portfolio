@@ -13,6 +13,19 @@ const fadeUp = (delay = 0) => ({
 });
 
 // ─────────────────────────────────────────────
+// GLASS STYLE TOKENS (matches homepage)
+// ─────────────────────────────────────────────
+
+const glass =
+  "bg-white/[0.06] backdrop-blur-2xl backdrop-saturate-150 border border-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.25),0_8px_32px_-8px_rgba(0,0,0,0.45)]";
+
+const glassButtonPrimary =
+  "bg-blue-400/90 backdrop-blur-md backdrop-saturate-150 border border-white/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.5),0_4px_20px_-4px_rgba(59,130,246,0.45)] text-black hover:bg-blue-300/90 transition-colors duration-200";
+
+const glassButtonSecondary =
+  "bg-white/[0.06] backdrop-blur-xl backdrop-saturate-150 border border-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] text-gray-200 hover:border-white/30 hover:text-white transition-colors duration-200";
+
+// ─────────────────────────────────────────────
 // DATA
 // ─────────────────────────────────────────────
 
@@ -25,20 +38,20 @@ const journey = [
   },
   {
     year: "2024",
-    title: "Joined Intelxlabs as Software Engineer",
-    desc: "Built enterprise Windows applications in C# and WPF. Shipped Fusion VPN and Data Privacy tools used by real clients.",
+    title: "Joined NexTechnologies Labs as DevOps Engineer",
+    desc: "Started architecting AWS and Kubernetes infrastructure while also building Windows cybersecurity applications in C# and WPF — infrastructure and software work side by side from day one.",
     current: false,
   },
   {
-    year: "2025",
-    title: "Moved into DevOps at NEXtech",
-    desc: "Shifted focus to cloud infrastructure and platform engineering. Started working with Kubernetes, AWS, Helm, and Grafana at scale.",
+    year: "2026",
+    title: "Wrapped up a two-year run at NexTechnologies Labs",
+    desc: "Left having cut Kubernetes pod memory usage ~25% through resource optimization, automated deployments with Helm and CI/CD pipelines, and shipped production cybersecurity tools.",
     current: false,
   },
   {
     year: "Now",
-    title: "Building & learning",
-    desc: "Deepening expertise in cloud-native architecture, GitOps, and observability. Open to new challenges and opportunities.",
+    title: "Open to new opportunities",
+    desc: "Deepening expertise in cloud-native architecture and observability while exploring the next role.",
     current: true,
   },
 ];
@@ -127,7 +140,7 @@ export default function About() {
       <div className="relative z-10">
         <Navbar />
 
-        <div className="max-w-4xl mx-auto px-6 pt-16 pb-28">
+        <div className="max-w-4xl mx-auto px-6 pt-8 pb-28">
           {/* ── INTRO ── */}
           <SectionLabel>ABOUT</SectionLabel>
 
@@ -138,33 +151,26 @@ export default function About() {
             Hey, I&apos;m Dhruv
           </motion.h1>
 
-          <motion.div
-            {...fadeUp(0.1)}
-            className="flex items-start gap-6 mb-20 rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-sm p-6"
-          >
+          <motion.div {...fadeUp(0.1)} className={`flex items-start gap-6 mb-20 rounded-2xl p-6 ${glass}`}>
             <div className="flex-shrink-0 w-14 h-14 rounded-full bg-blue-400/10 border border-blue-400/25 flex items-center justify-center">
               <span className={`${heading} text-blue-400 text-lg font-bold`}>DP</span>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed pt-1.5">
-              A Software Engineer &amp; DevOps professional based in Surat, Gujarat, India.
-              I care deeply about building systems that are reliable, scalable, and secure —
-              the kind of infrastructure that quietly powers great products without anyone
-              noticing.
+              A DevOps Engineer based in Surat, Gujarat, India, who thinks the best infrastructure
+              is invisible — reliable, scalable, secure, and never the reason anyone&apos;s phone
+              buzzes at 2am.
             </p>
           </motion.div>
 
           {/* ── WHO I AM ── */}
           <div className="mb-20">
             <SectionLabel>WHO I AM</SectionLabel>
-            <motion.div
-              {...fadeUp(0.05)}
-              className="rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-sm p-6"
-            >
+            <motion.div {...fadeUp(0.05)} className={`rounded-2xl p-6 ${glass}`}>
               <p className="text-gray-400 text-sm leading-relaxed">
-                I&apos;m an engineer who sits at the intersection of software development and
-                infrastructure. I started out writing code and naturally gravitated toward
-                the systems that run it — cloud platforms, container orchestration, deployment
-                pipelines, and observability stacks.
+                I sit at the intersection of writing software and running the systems it lives
+                on. I started out shipping code, then got pulled toward the platforms underneath
+                it — cloud, containers, pipelines, observability — because I wanted to understand
+                not just what ships, but what keeps it standing.
               </p>
             </motion.div>
           </div>
@@ -195,7 +201,7 @@ export default function About() {
                     )}
                   </div>
                   <div className={`${i < journey.length - 1 ? "pb-8" : ""} flex-1`}>
-                    <div className="rounded-xl border border-white/10 bg-white/[0.02] p-5 hover:border-blue-400/20 transition-colors duration-300">
+                    <div className={`rounded-2xl p-5 hover:border-blue-400/25 transition-colors duration-300 ${glass}`}>
                       <span className="text-xs text-blue-400 font-bold font-mono">{item.year}</span>
                       <h3 className={`${heading} text-base font-semibold text-white mt-1.5 mb-1.5`}>
                         {item.title}
@@ -216,7 +222,7 @@ export default function About() {
                 <motion.div
                   key={item.title}
                   {...fadeUp(i * 0.06)}
-                  className="group rounded-xl border border-white/10 bg-white/[0.02] backdrop-blur-sm p-5 hover:border-blue-400/30 hover:bg-white/[0.04] transition-all duration-300"
+                  className={`group rounded-2xl p-5 hover:border-blue-400/30 hover:bg-white/[0.09] transition-all duration-300 ${glass}`}
                 >
                   <div className="flex items-center gap-2 mb-2">
                     <span className="text-blue-400">—</span>
@@ -231,7 +237,7 @@ export default function About() {
           {/* ── VALUES ── */}
           <div className="mb-20">
             <SectionLabel>VALUES &amp; PHILOSOPHY</SectionLabel>
-            <div className="rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-sm divide-y divide-white/5">
+            <div className={`rounded-2xl divide-y divide-white/10 ${glass}`}>
               {values.map((item, i) => (
                 <motion.div
                   key={item.value}
@@ -250,7 +256,7 @@ export default function About() {
           {/* ── CTA ── */}
           <motion.div
             {...fadeUp(0)}
-            className="rounded-2xl border border-white/10 bg-gradient-to-r from-white/[0.03] to-transparent backdrop-blur-sm p-6 sm:p-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6"
+            className={`rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 ${glass}`}
           >
             <div>
               <p className={`${heading} text-base font-semibold text-white mb-1`}>
@@ -259,16 +265,10 @@ export default function About() {
               <p className="text-xs text-gray-500">I&apos;m open to remote and hybrid opportunities.</p>
             </div>
             <div className="flex gap-3 flex-shrink-0">
-              <a
-                href="/contact"
-                className="bg-blue-400 text-black px-5 py-2.5 text-sm font-bold rounded-lg hover:bg-blue-300 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
-              >
+              <a href="/contact" className={`px-5 py-2.5 text-sm font-bold rounded-full ${glassButtonPrimary}`}>
                 Get in touch
               </a>
-              <a
-                href="/resume"
-                className="border border-white/15 text-gray-300 px-5 py-2.5 text-sm rounded-lg hover:border-white/30 hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
-              >
+              <a href="/resume" className={`px-5 py-2.5 text-sm rounded-full ${glassButtonSecondary}`}>
                 View resume
               </a>
             </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 
 const heading = "font-[family-name:var(--font-space-grotesk)]";
@@ -11,6 +12,22 @@ const fadeUp = (delay = 0) => ({
   viewport: { once: true },
   transition: { duration: 0.6, delay },
 });
+
+// ─────────────────────────────────────────────
+// GLASS STYLE TOKENS
+// ─────────────────────────────────────────────
+
+const glass =
+  "bg-white/[0.06] backdrop-blur-2xl backdrop-saturate-150 border border-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.25),0_8px_32px_-8px_rgba(0,0,0,0.45)]";
+
+const glassLight =
+  "bg-white/[0.05] backdrop-blur-md backdrop-saturate-150 border border-white/12 shadow-[inset_0_1px_0_rgba(255,255,255,0.15)]";
+
+const glassButtonPrimary =
+  "bg-blue-400/90 backdrop-blur-md backdrop-saturate-150 border border-white/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.5),0_4px_20px_-4px_rgba(59,130,246,0.45)] text-black hover:bg-blue-300/90 transition-colors duration-200";
+
+const glassButtonSecondary =
+  "bg-white/[0.06] backdrop-blur-xl backdrop-saturate-150 border border-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] text-gray-200 hover:border-white/30 hover:text-white transition-colors duration-200";
 
 // ─────────────────────────────────────────────
 // DATA
@@ -26,62 +43,56 @@ const whatIDo = [
   {
     no: "01",
     title: "Cloud Infrastructure",
-    desc: "I architect and manage production AWS environments — EC2, VPC, IAM, S3, CloudFront. Infrastructure that scales quietly and fails gracefully.",
+    desc: "Production AWS environments — EC2, VPC, IAM, S3, CloudFront — architected to scale without drama and fail without waking anyone up.",
   },
   {
     no: "02",
     title: "Kubernetes & Containers",
-    desc: "From cluster setup to RBAC and Helm chart maintenance — I run containerized workloads that are efficient, secure, and observable.",
+    desc: "Cluster setup, RBAC, Helm chart maintenance — containerized workloads built to be efficient, secure, and impossible to lose track of.",
   },
   {
     no: "03",
     title: "CI/CD & Automation",
-    desc: "GitHub Actions, Jenkins, ArgoCD. I build pipelines that take code from commit to production without manual steps or surprises.",
+    desc: "GitHub Actions, Jenkins, ArgoCD — pipelines that take code from commit to production without a single manual step or surprise.",
   },
   {
     no: "04",
     title: "Observability",
-    desc: "Prometheus metrics, Grafana dashboards, production alerting. If something breaks, I want to know before users do.",
+    desc: "Prometheus metrics, Grafana dashboards, real alerting. If something breaks, I find out before a single user does.",
   },
   {
     no: "05",
     title: "Software Engineering",
-    desc: "C#, Go, Rust. I've built enterprise Windows apps and cybersecurity tools. I understand the code that runs on the infrastructure I manage.",
+    desc: "Go and C#. I've shipped enterprise cybersecurity applications alongside the infrastructure work — I understand the code running on what I manage, not just the platform underneath it.",
   },
 ];
 
 const skillGroups = [
-  { category: "Cloud", items: ["AWS EC2", "S3", "CloudFront", "IAM", "VPC"] },
-  { category: "Containers", items: ["Kubernetes", "Docker", "Helm"] },
-  { category: "CI/CD", items: ["GitHub Actions", "Jenkins", "ArgoCD"] },
-  { category: "Infrastructure", items: ["Terraform", "Nginx", "Linux", "Git"] },
-  { category: "Monitoring", items: ["Prometheus", "Grafana", "CloudWatch"] },
-  { category: "Languages", items: ["C#", "Go", "Rust", "Bash"] },
+  { category: "Cloud", items: ["AWS EC2", "VPC", "IAM", "S3", "CloudFront", "ECR", "SSM Parameter Store"] },
+  { category: "Containers", items: ["Docker", "Kubernetes", "Helm"] },
+  { category: "CI/CD", items: ["GitHub Actions", "Jenkins", "ArgoCD", "Git"] },
+  { category: "Infrastructure", items: ["Terraform", "Nginx", "Linux"] },
+  { category: "Monitoring", items: ["Prometheus", "Grafana"] },
+  { category: "Languages & Data", items: ["Go", "C#", "PostgreSQL", "Redis"] },
 ];
 
 const projects = [
   {
     title: "AstraLink",
-    desc: "Microservices on Kubernetes with Helm orchestration and AWS SSM config management.",
-    tags: ["Kubernetes", "Helm", "AWS"],
+    desc: "Kubernetes-based microservices platform. Helm-driven deployments, AWS SSM Parameter Store for secure config, and Docker/ECR built into the pipeline for consistent, repeatable releases.",
+    tags: ["Kubernetes", "Helm", "AWS ECR"],
     status: "Production",
   },
   {
     title: "Fusion Data Secure",
-    desc: "Enterprise Windows cybersecurity platform — VPN access, data protection, MSI deployment.",
+    desc: "Enterprise Windows cybersecurity platform for VPN connectivity and data protection, built in C# and WPF with production-ready MSI installers via Advanced Installer.",
     tags: ["C#", "WPF", "MSI"],
     status: "Production",
   },
   {
-    title: "Observability Stack",
-    desc: "Full Prometheus + Grafana monitoring setup with custom dashboards and alerting.",
-    tags: ["Prometheus", "Grafana", "K8s"],
-    status: "Production",
-  },
-  {
     title: "Portfolio Infrastructure",
-    desc: "This site — AWS EC2, Nginx reverse proxy, SSL, DNS routing, PM2 process management.",
-    tags: ["AWS", "Nginx", "PM2"],
+    desc: "This site — deployed on AWS EC2 with Nginx reverse proxy, SSL termination, DNS routing, and PM2 process management.",
+    tags: ["AWS EC2", "Nginx", "PM2"],
     status: "Live",
   },
 ];
@@ -89,23 +100,17 @@ const projects = [
 const experience = [
   {
     role: "DevOps Engineer",
-    company: "NEXtech",
-    period: "Oct 2025 – May 2026",
-    location: "Remote · Bangalore",
-    desc: "Architecting cloud infrastructure on AWS, managing Kubernetes clusters, and building CI/CD automation at scale.",
-    current: true,
-  },
-  {
-    role: "Software Engineer",
-    company: "Intelxlabs",
-    period: "Aug 2024 – Sep 2025",
+    company: "NexTechnologies Labs Private Limited",
+    period: "Sep 2024 – May 2026",
     location: "Surat, India",
-    desc: "Built enterprise cybersecurity applications in C# and WPF. Shipped Fusion VPN and Data Privacy Protection tools.",
-    current: false,
+    desc: "Architected AWS infrastructure (EC2, IAM, VPC, S3, CloudFront, ECR) and Kubernetes platforms, cutting pod memory usage ~25% through resource optimization. Automated deployments with Helm, GitHub Actions, and Jenkins, and built Windows cybersecurity applications in C#/WPF alongside the infrastructure work.",
+    current: true,
   },
 ];
 
-const terminalLines = [
+type TermLine = { type: "cmd" | "out" | "ok"; text: string };
+
+const scriptLines: TermLine[] = [
   { type: "cmd", text: "kubectl get pods -n production" },
   { type: "out", text: "api-gateway-7d9f8b     1/1   Running" },
   { type: "out", text: "worker-queue-6c4a2d    1/1   Running" },
@@ -157,19 +162,23 @@ function IconArrowUpRight({ className }: { className?: string }) {
 }
 
 // ─────────────────────────────────────────────
-// DECORATIVE / LAYOUT PRIMITIVES
+// BACKGROUND LAYERS
 // ─────────────────────────────────────────────
 
 function GridBackground() {
   return (
     <div aria-hidden className="absolute inset-0 z-0 overflow-hidden">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:56px_56px] [mask-image:radial-gradient(ellipse_70%_55%_at_50%_0%,#000_40%,transparent_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:56px_56px] [mask-image:radial-gradient(ellipse_70%_55%_at_50%_0%,#000_40%,transparent_100%)]" />
       <div className="absolute top-[-12%] left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-blue-500/[0.14] rounded-full blur-[140px]" />
-      <div className="absolute top-[35%] right-[-12%] w-[500px] h-[500px] bg-blue-500/[0.07] rounded-full blur-[140px]" />
-      <div className="absolute bottom-[5%] left-[-10%] w-[450px] h-[450px] bg-blue-400/[0.06] rounded-full blur-[130px]" />
+      <div className="absolute top-[35%] right-[-12%] w-[500px] h-[500px] bg-blue-500/[0.06] rounded-full blur-[140px]" />
+      <div className="absolute bottom-[5%] left-[-10%] w-[450px] h-[450px] bg-blue-400/[0.05] rounded-full blur-[130px]" />
     </div>
   );
 }
+
+// ─────────────────────────────────────────────
+// LAYOUT PRIMITIVES
+// ─────────────────────────────────────────────
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
@@ -183,42 +192,87 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
-function TerminalWindow() {
+function TypingTerminal() {
+  const [lines, setLines] = useState<{ type: string; text: string; done: boolean }[]>([]);
+  const [lineIndex, setLineIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+
+  useEffect(() => {
+    if (lineIndex >= scriptLines.length) {
+      const resetTimer = setTimeout(() => {
+        setLines([]);
+        setLineIndex(0);
+        setCharIndex(0);
+      }, 1800);
+      return () => clearTimeout(resetTimer);
+    }
+
+    const current = scriptLines[lineIndex];
+
+    if (current.type !== "cmd") {
+      const timer = setTimeout(() => {
+        setLines((prev) => [...prev, { type: current.type, text: current.text, done: true }]);
+        setLineIndex((i) => i + 1);
+      }, 260);
+      return () => clearTimeout(timer);
+    }
+
+    if (charIndex === 0) {
+      setLines((prev) => [...prev, { type: "cmd", text: "", done: false }]);
+    }
+
+    if (charIndex < current.text.length) {
+      const timer = setTimeout(() => {
+        const nextChar = charIndex + 1;
+        setCharIndex(nextChar);
+        setLines((prev) => {
+          const next = [...prev];
+          next[next.length - 1] = { type: "cmd", text: current.text.slice(0, nextChar), done: false };
+          return next;
+        });
+      }, 28 + Math.random() * 35);
+      return () => clearTimeout(timer);
+    } else {
+      const timer = setTimeout(() => {
+        setLines((prev) => {
+          const next = [...prev];
+          next[next.length - 1] = { type: "cmd", text: current.text, done: true };
+          return next;
+        });
+        setLineIndex((i) => i + 1);
+        setCharIndex(0);
+      }, 220);
+      return () => clearTimeout(timer);
+    }
+  }, [lineIndex, charIndex]);
+
   return (
     <motion.div
       {...fadeUp(0.3)}
-      className="relative rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur-xl shadow-[0_0_60px_-15px_rgba(96,165,250,0.25)] overflow-hidden"
+      className={`relative rounded-2xl overflow-hidden ${glass}`}
     >
-      <div className="flex items-center gap-1.5 px-4 py-3 border-b border-white/10 bg-white/[0.02]">
+      <div className="flex items-center gap-1.5 px-4 py-3 border-b border-white/10 bg-white/[0.03]">
         <span className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
         <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
         <span className="w-2.5 h-2.5 rounded-full bg-green-500/70" />
         <span className="ml-3 text-[10px] text-gray-500 font-mono">production — zsh</span>
       </div>
       <div className="p-5 font-mono text-[11px] leading-relaxed space-y-1.5 min-h-[260px]">
-        {terminalLines.map((line, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.3, delay: 0.6 + i * 0.15 }}
-          >
+        {lines.map((line, i) => (
+          <div key={i}>
             {line.type === "cmd" && (
               <p>
                 <span className="text-blue-400">$</span>{" "}
                 <span className="text-gray-200">{line.text}</span>
+                {!line.done && (
+                  <span className="inline-block w-1.5 h-3.5 bg-blue-400 ml-0.5 translate-y-0.5 animate-pulse" />
+                )}
               </p>
             )}
             {line.type === "out" && <p className="text-gray-500 pl-3">{line.text}</p>}
             {line.type === "ok" && <p className="text-green-400 pl-3">{line.text}</p>}
-          </motion.div>
+          </div>
         ))}
-        <motion.span
-          animate={{ opacity: [1, 0] }}
-          transition={{ duration: 0.8, repeat: Infinity, repeatType: "reverse" }}
-          className="inline-block w-1.5 h-3.5 bg-blue-400 translate-y-0.5"
-        />
       </div>
     </motion.div>
   );
@@ -226,10 +280,7 @@ function TerminalWindow() {
 
 function StatCard({ label, value, sub, delay }: { label: string; value: string; sub: string; delay: number }) {
   return (
-    <motion.div
-      {...fadeUp(delay)}
-      className="rounded-xl border border-white/10 bg-white/[0.02] backdrop-blur-sm p-5 hover:border-blue-400/30 transition-colors duration-300"
-    >
+    <motion.div {...fadeUp(delay)} className={`rounded-2xl p-5 hover:border-blue-400/30 transition-colors duration-300 ${glass}`}>
       <p className="text-[11px] text-gray-500 tracking-widest mb-2">{label}</p>
       <p className={`${heading} text-base text-white font-semibold mb-1`}>{value}</p>
       <p className="text-xs text-gray-500">{sub}</p>
@@ -239,10 +290,7 @@ function StatCard({ label, value, sub, delay }: { label: string; value: string; 
 
 function DoCard({ no, title, desc, delay }: { no: string; title: string; desc: string; delay: number }) {
   return (
-    <motion.div
-      {...fadeUp(delay)}
-      className="group rounded-xl border border-white/10 bg-white/[0.02] backdrop-blur-sm p-6 hover:border-blue-400/30 hover:bg-white/[0.04] transition-all duration-300"
-    >
+    <motion.div {...fadeUp(delay)} className={`group rounded-2xl p-6 hover:border-blue-400/30 hover:bg-white/[0.08] transition-all duration-300 ${glass}`}>
       <span className="text-xs font-mono text-blue-400/70">{no}</span>
       <h3 className={`${heading} text-base font-semibold text-white mt-2 mb-2`}>{title}</h3>
       <p className="text-sm text-gray-500 leading-relaxed">{desc}</p>
@@ -252,16 +300,13 @@ function DoCard({ no, title, desc, delay }: { no: string; title: string; desc: s
 
 function SkillGroupCard({ category, items, delay }: { category: string; items: string[]; delay: number }) {
   return (
-    <motion.div
-      {...fadeUp(delay)}
-      className="rounded-xl border border-white/10 bg-white/[0.02] p-5 hover:border-blue-400/30 transition-colors duration-300"
-    >
+    <motion.div {...fadeUp(delay)} className={`rounded-2xl p-5 hover:border-blue-400/30 transition-colors duration-300 ${glass}`}>
       <p className="text-[11px] text-blue-400 tracking-widest mb-3 font-semibold">{category}</p>
       <div className="flex flex-wrap gap-1.5">
         {items.map((item) => (
           <span
             key={item}
-            className="text-[11px] text-gray-400 border border-white/10 rounded-full px-2.5 py-1 hover:text-white hover:border-white/25 transition-colors duration-200 cursor-default"
+            className={`text-[11px] text-gray-300 rounded-full px-2.5 py-1 hover:text-white hover:border-white/25 transition-colors duration-200 cursor-default ${glassLight}`}
           >
             {item}
           </span>
@@ -289,7 +334,7 @@ function ProjectCard({
       href="/projects"
       {...fadeUp(delay)}
       whileHover={{ y: -4 }}
-      className="group relative rounded-xl border border-white/10 bg-white/[0.02] backdrop-blur-sm p-6 flex flex-col hover:border-blue-400/30 hover:bg-white/[0.04] transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/50"
+      className={`group relative rounded-2xl p-6 flex flex-col hover:border-blue-400/30 hover:bg-white/[0.08] transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/50 ${glass}`}
     >
       <div className="flex justify-between items-start mb-3">
         <h3 className={`${heading} text-base font-semibold group-hover:text-blue-400 transition-colors duration-200`}>
@@ -304,7 +349,7 @@ function ProjectCard({
       <div className="flex items-center justify-between">
         <div className="flex flex-wrap gap-1.5">
           {tags.map((tag) => (
-            <span key={tag} className="text-[10px] border border-white/10 rounded px-2 py-0.5 text-gray-500">
+            <span key={tag} className={`text-[10px] rounded-full px-2 py-0.5 text-gray-400 ${glassLight}`}>
               {tag}
             </span>
           ))}
@@ -351,7 +396,7 @@ function TimelineItem({
         {!isLast && <span className="w-px flex-1 bg-white/10 mt-2" />}
       </div>
       <div className="flex-1 pb-10">
-        <div className="rounded-xl border border-white/10 bg-white/[0.02] p-5 hover:border-blue-400/20 transition-colors duration-300">
+        <div className={`rounded-2xl p-5 hover:border-blue-400/20 transition-colors duration-300 ${glass}`}>
           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 mb-1">
             <h3 className={`${heading} text-base font-semibold text-white`}>{role}</h3>
             <span className="text-xs text-gray-500 font-mono">{period}</span>
@@ -378,17 +423,17 @@ export default function Home() {
         <Navbar />
 
         {/* ── HERO ── */}
-        <section className="max-w-6xl mx-auto px-6 pt-24 pb-28 grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-16 items-center">
-          <div>
+        <section className="relative max-w-6xl mx-auto px-6 pt-24 pb-28 grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-16 items-center">
+          <div className="relative z-10">
             <motion.div
               {...fadeUp(0)}
-              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] backdrop-blur-sm px-3 py-1.5 mb-8"
+              className={`inline-flex items-center gap-2 rounded-full px-3 py-1.5 mb-8 ${glassLight}`}
             >
               <span className="relative flex h-1.5 w-1.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-blue-400" />
               </span>
-              <span className="text-[11px] text-gray-400 tracking-widest">AVAILABLE FOR WORK · REMOTE / HYBRID</span>
+              <span className="text-[11px] text-gray-300 tracking-widest">AVAILABLE FOR WORK · REMOTE / HYBRID</span>
             </motion.div>
 
             <motion.p {...fadeUp(0.05)} className="text-gray-500 text-sm mb-3">
@@ -407,31 +452,32 @@ export default function Home() {
             </motion.p>
 
             <motion.p {...fadeUp(0.24)} className="text-gray-500 text-base leading-relaxed max-w-md mb-10">
-              I build and run infrastructure that scales quietly and fails gracefully — Kubernetes, AWS, and
-              CI/CD pipelines that take code from commit to production without surprises.
+              I build infrastructure that scales quietly, fails gracefully, and rarely needs a
+              2am phone call — Kubernetes, AWS, and CI/CD pipelines engineered to make shipping
+              boring, on purpose.
             </motion.p>
 
             <motion.div {...fadeUp(0.3)} className="flex flex-wrap items-center gap-3">
               <a
                 href="/projects"
-                className="bg-blue-400 text-black px-5 py-2.5 text-sm font-bold rounded-lg hover:bg-blue-300 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
+                className={`px-5 py-2.5 text-sm font-bold rounded-full ${glassButtonPrimary}`}
               >
                 View Projects
               </a>
               <a
                 href="/resume"
-                className="inline-flex items-center gap-2 border border-white/15 text-gray-300 px-5 py-2.5 text-sm rounded-lg hover:border-white/30 hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
+                className={`inline-flex items-center gap-2 px-5 py-2.5 text-sm rounded-full ${glassButtonSecondary}`}
               >
                 <IconDownload className="w-3.5 h-3.5" />
                 Download Resume
               </a>
               <div className="flex items-center gap-2 ml-1">
                 <a
-                  href="https://github.com/"
+                  href="https://github.com/dhruvdxb"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="GitHub"
-                  className="w-9 h-9 flex items-center justify-center rounded-lg border border-white/10 text-gray-400 hover:text-white hover:border-white/25 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/50"
+                  className={`w-9 h-9 flex items-center justify-center rounded-full text-gray-400 hover:text-white hover:border-white/25 transition-colors duration-200 ${glassLight}`}
                 >
                   <IconGithub className="w-4 h-4" />
                 </a>
@@ -440,7 +486,7 @@ export default function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn"
-                  className="w-9 h-9 flex items-center justify-center rounded-lg border border-white/10 text-gray-400 hover:text-white hover:border-white/25 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/50"
+                  className={`w-9 h-9 flex items-center justify-center rounded-full text-gray-400 hover:text-white hover:border-white/25 transition-colors duration-200 ${glassLight}`}
                 >
                   <IconLinkedin className="w-4 h-4" />
                 </a>
@@ -448,7 +494,7 @@ export default function Home() {
             </motion.div>
           </div>
 
-          <TerminalWindow />
+          <TypingTerminal />
         </section>
 
         {/* ── ABOUT ── */}
@@ -510,7 +556,7 @@ export default function Home() {
         <section className="max-w-6xl mx-auto px-6 py-16 border-t border-white/5">
           <motion.div
             {...fadeUp(0)}
-            className="rounded-2xl border border-white/10 bg-gradient-to-r from-white/[0.03] to-transparent backdrop-blur-sm p-8 sm:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
+            className={`rounded-2xl p-8 sm:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 ${glass}`}
           >
             <div>
               <h2 className={`${heading} text-xl font-semibold text-white mb-2`}>Want the full picture?</h2>
@@ -520,7 +566,7 @@ export default function Home() {
             </div>
             <a
               href="/resume"
-              className="inline-flex items-center gap-2 bg-blue-400 text-black px-5 py-2.5 text-sm font-bold rounded-lg hover:bg-blue-300 transition-colors duration-200 flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
+              className={`inline-flex items-center gap-2 px-5 py-2.5 text-sm font-bold rounded-full flex-shrink-0 ${glassButtonPrimary}`}
             >
               <IconDownload className="w-3.5 h-3.5" />
               Download Resume
@@ -536,19 +582,20 @@ export default function Home() {
             </SectionLabel>
             <h2 className={`${heading} text-3xl sm:text-4xl font-bold mb-4`}>Let&apos;s build something together</h2>
             <p className="text-gray-500 text-sm max-w-md mx-auto mb-8 leading-relaxed">
-              Whether it&apos;s a DevOps role, a freelance infrastructure project, or just a conversation —
-              I&apos;m always open to hearing about interesting opportunities.
+              Whether it&apos;s a DevOps role, a freelance infrastructure project, or an outage
+              you'd rather I looked at before it becomes a war-room story — I&apos;m always
+              open to hearing about it.
             </p>
             <div className="flex justify-center gap-4 flex-wrap">
               <a
                 href="/contact"
-                className="bg-blue-400 text-black px-6 py-3 text-sm font-bold rounded-lg hover:bg-blue-300 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
+                className={`px-6 py-3 text-sm font-bold rounded-full ${glassButtonPrimary}`}
               >
                 Get in touch
               </a>
               <a
                 href="mailto:dhruvmpatel170301@gmail.com"
-                className="border border-white/15 text-gray-300 px-6 py-3 text-sm rounded-lg hover:border-white/30 hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
+                className={`px-6 py-3 text-sm rounded-full ${glassButtonSecondary}`}
               >
                 dhruvmpatel170301@gmail.com
               </a>
