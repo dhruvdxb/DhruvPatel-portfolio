@@ -98,7 +98,7 @@ export default function Resume() {
               View Resume
             </button>
             <a
-              href="/Dhruv_Patel.pdf"
+              href="/Dhruv_Patel-Resume.pdf"
               download="Dhruv_Patel_Resume.pdf"
               className={`px-5 py-2.5 text-sm rounded-full ${glassButtonSecondary}`}
             >
@@ -226,7 +226,7 @@ export default function Resume() {
                 <span className={`${heading} text-sm font-semibold text-white`}>Dhruv Patel — Resume</span>
                 <div className="flex gap-3 items-center">
                   <a
-                    href="/Dhruv_Patel.pdf"
+                    href="/Dhruv_Patel-Resume.pdf"
                     download="Dhruv_Patel_Resume.pdf"
                     className={`px-4 py-1.5 rounded-full text-xs font-bold ${glassButtonPrimary}`}
                   >
@@ -237,7 +237,7 @@ export default function Resume() {
                   </button>
                 </div>
               </div>
-              <iframe src="/Dhruv_Patel.pdf" className="flex-1 w-full" title="Dhruv Patel Resume" />
+              <iframe src="/Dhruv_Patel-Resume.pdf" className="flex-1 w-full" title="Dhruv Patel Resume" />
             </div>
           </div>
         )}
