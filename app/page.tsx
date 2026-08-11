@@ -35,7 +35,7 @@ const glassButtonSecondary =
 
 const stats = [
   { label: "Status", value: "Open to Work", sub: "Immediate Joiner" },
-  { label: "Location", value: "India", sub: "GMT+5:30 · Remote / Hybrid" },
+  { label: "Location", value: "India", sub: "GMT+5:30 · On Site / Remote / Hybrid" },
   { label: "Focus", value: "Software Engineering & DevOps", sub: "Kubernetes · AWS · CI/CD" },
 ];
 
@@ -433,7 +433,7 @@ export default function Home() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-blue-400" />
               </span>
-              <span className="text-[11px] text-gray-300 tracking-widest">AVAILABLE FOR WORK · REMOTE / HYBRID</span>
+              <span className="text-[11px] text-gray-300 tracking-widest">AVAILABLE FOR WORK ON SITE / REMOTE / HYBRID</span>
             </motion.div>
 
             <motion.p {...fadeUp(0.05)} className="text-gray-500 text-sm mb-3">
@@ -448,7 +448,7 @@ export default function Home() {
             </motion.h1>
 
             <motion.p {...fadeUp(0.18)} className="text-blue-400 text-lg font-medium mb-4">
-              DevOps Engineer <span className="text-gray-600">·</span> Cloud Infrastructure Engineer
+              Software & DevOps Engineer <span className="text-gray-600">·</span>
             </motion.p>
 
             <motion.p {...fadeUp(0.24)} className="text-gray-500 text-base leading-relaxed max-w-md mb-10">
@@ -463,13 +463,6 @@ export default function Home() {
                 className={`px-5 py-2.5 text-sm font-bold rounded-full ${glassButtonPrimary}`}
               >
                 View Projects
-              </a>
-              <a
-                href="/resume"
-                className={`inline-flex items-center gap-2 px-5 py-2.5 text-sm rounded-full ${glassButtonSecondary}`}
-              >
-                <IconDownload className="w-3.5 h-3.5" />
-                Download Resume
               </a>
               <div className="flex items-center gap-2 ml-1">
                 <a

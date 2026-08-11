@@ -64,9 +64,9 @@ const skills = [
 ];
 
 const stats = [
-  { value: "1.5+", label: "Years Experience" },
+  { value: "2+", label: "Years Experience" },
   { value: "1", label: "Company" },
-  { value: "2", label: "Key Projects" },
+  { value: "3+", label: "Key Projects" },
 ];
 
 export default function Experience() {
